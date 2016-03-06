@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Currently an undergraduate researcher at Colorado State University.
+Sometimes I think about compilers and languages.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
+Will your application survive the next hardware?
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+### Contact me
+[CSU page](https://www.cs.colostate.edu/~ibertola)
+
+[ian.bertolacci@gmail.com](mailto:ian.bertolacci@gmail.com)

@@ -10,9 +10,9 @@ Today I'm going to show you something I _just_ got my hands on:
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">YES! I finally got my llvmlite install to work! Had to use the 0.10 dev version, but it works! <a href="https://t.co/6ZG5FwWWDh">https://t.co/6ZG5FwWWDh</a></p>&mdash; Ian Bertolacci (@IanBertolacci) <a href="https://twitter.com/IanBertolacci/status/706192233846874112">March 5, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Like all good coding blogs, the full code is [at the bottom](#full-code) (maybe I'll create a repo for it), but first lets get rant-y!
+Like all good coding blogs, the full code is [at the bottom](#full-code), but first lets get rant-y!
 
-LLVM is cool (if difficult to build/install/use/link) and python is great!
+LLVM is cool (if difficult to build/install/use/link) and python is great!  
 So this is particularly exciting.
 
 I've been interested in doing the LLVM [Kaleidoscope](http://llvm.org/docs/tutorial/LangImpl1.html) tutorial for ages, but dislike using C++, especially for personal projects.
@@ -54,12 +54,12 @@ I use `--user` since I'm use to academic environments where you aren't root and 
 to ensure that it was installed, run  
 `echo "import llvmlite" | python`
 
-If nothing happened you're solid.  
+If nothing happened you're solid.
 If you got  
 `Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ImportError: No module named llvmlite`  
-something went wrong.  
+something went wrong.
 
 ## LLVM and llvmlite
 
@@ -116,8 +116,8 @@ Pretty simple.
 And the LLVM construction reflects that.
 Lets break down part by part whats going on (full code embedded below).
 
-This is the only relevant import.  
-The [ir layer module](http://llvmlite.readthedocs.org/en/latest/ir/index.html) defines all the relevant types and operations for creating the LLVM IR tree.
+This is the only relevant import.
+The [IR layer module](http://llvmlite.readthedocs.org/en/latest/ir/index.html) defines all the relevant types and operations for creating the LLVM IR tree.
 
 {% highlight python %}
 from llvmlite import ir
@@ -175,6 +175,7 @@ const_2 = ir.Constant(int_type,2);
 
 Now we can do our comparison.
 `builder.icmp_signed` will create the comparison instruction.
+
 This may seem/be obvious to some, but the instruction implicitly will store to an auto-generated temporary value.
 This is a big reason for using LLVM (at the most basic level of compiler development), since we don't have to do our own register allocation.
 
@@ -183,11 +184,11 @@ This is a big reason for using LLVM (at the most basic level of compiler develop
 fn_fib_n_lteq_1 = builder.icmp_signed(cmpop="<=", lhs=fn_fib_n, rhs=const_1 )
 {% endhighlight %}
 
-We then build our conditional jump using `builder.if_then`, passing our predicate (the result of `fn_fib_n_lteq_1`) to it.
+We then build our conditional jump using `builder.if_then`, passing our predicate (the result of `fn_fib_n_lteq_1`) to it.  
 Importantly, this doesn't just create our branch instruction, it also creates the 'then' and 'endif' code-blocks.
 
-Now, `builder.if_then` gives us a Generator object which we use by the `with` statement.
-When we are inside that `with` block, we are appending instructions/blocks/etc to the 'then' block.
+Now, `builder.if_then` gives us a Generator object which we use by the `with` statement.  
+When we are inside that `with`, we are appending instructions/blocks/etc to the 'then' block.
 We simply return the constant value '1':
 {% highlight python %}
 # Create the base case
@@ -228,7 +229,7 @@ fn_fib_rec_res =  builder.add( call_fn_fib_n_minus_1, call_fn_fib_n_minus_2 )
 builder.ret( fn_fib_rec_res )
 {% endhighlight %}
 
-And that's it!  
+And that's it!
 That's how you build code in LLVM.
 
 The `ir.Module` can actually be printed and we can see our results
@@ -270,7 +271,7 @@ from ctypes import CFUNCTYPE, c_int
 {% endhighlight %}
 
 The [`llvmlite.bindings`](http://llvmlite.readthedocs.org/en/latest/binding/index.html) module contains all the LLVM virtual machine bindings (surprised?).
-Not exactly sure what the importance of ctypes is, but we will be using it to actually run the function.
+ctypes will let us call the compiled function.
 
 Now we initialize all the llvm virtual machine.
 
@@ -295,9 +296,10 @@ engine = llvm.create_mcjit_compiler(backing_mod, target_machine)
 {% endhighlight %}
 
 Now we parse our module.
+
 Important note: module cannot be directly parsed by llvm.
-`llvm.parse_*` takes either a llvm bytecode object, or a string of llvm ir code.
-`ir.module` is neither, but casting it as string will give us the underlying llvm ir code.
+`llvm.parse_*` takes either a llvm bytecode object, or a string of llvm IR code.
+`ir.module` is neither, but casting it as a string will give us the underlying llvm IR code.
 
 {% highlight python %}
 # Parse our generated module
@@ -308,8 +310,8 @@ engine.add_module(mod)
 engine.finalize_object()
 {% endhighlight %}
 
-Now we get a function pointer, and (it appears) cast that function pointer using ctype.
-
+Now we get a function pointer, and (it appears) cast that function pointer using ctype.  
+(**Updated 3.06.16**  Can you spot the mistake?)
 {% highlight python %}
 # Look up the function pointer (a Python int)
 func_ptr = engine.get_function_address("fn_fib")
@@ -371,11 +373,9 @@ c_fn_fib(39) = 102334155
 c_fn_fib(40) = 165580141
 {% endhighlight %}
 
-
-Awesome!  
+Awesome!
 Lets take it a bit further!
 {% highlight bash %}
-c_fn_fib(40) = 165580141
 c_fn_fib(41) = 267914296
 c_fn_fib(42) = 433494437
 c_fn_fib(43) = 701408733
@@ -389,8 +389,79 @@ c_fn_fib(50) = -1109825406
 {% endhighlight %}
 
 Whoops we integer overflowed!
-64 bits is not big enough.
+But why?
 
+**Updated 3.06.16**  
+I have to thank [Jon Burgess](https://github.com/jburgess777) for catching this.  
+Originally I said "oh our `int_type` isnt wide enough" without thinking about just how big the max value of a signed int(64) is (9223372036854775807 if I can be trusted with numbers).
+
+The real issue is the C type we use.
+Our `int_type` is 64 bits, but `c_int` is only 32 bits!
+I wonder if you could make a really nasty bug from the execution engine only writing 32 bugs.
+Would alignment protect against that?
+Someone should try that.
+
+So lets use `c_int64` in our function pointer cast:
+{% highlight python %}
+c_fn_fib = CFUNCTYPE(c_int64, c_int64)(func_ptr)
+{% endhighlight %}
+
+And voilà, correct results.
+{% highlight bash %}
+c_fn_fib(0) = 1
+c_fn_fib(1) = 1
+c_fn_fib(2) = 2
+c_fn_fib(3) = 3
+c_fn_fib(4) = 5
+c_fn_fib(5) = 8
+c_fn_fib(6) = 13
+c_fn_fib(7) = 21
+c_fn_fib(8) = 34
+c_fn_fib(9) = 55
+c_fn_fib(10) = 89
+c_fn_fib(11) = 144
+c_fn_fib(12) = 233
+c_fn_fib(13) = 377
+c_fn_fib(14) = 610
+c_fn_fib(15) = 987
+c_fn_fib(16) = 1597
+c_fn_fib(17) = 2584
+c_fn_fib(18) = 4181
+c_fn_fib(19) = 6765
+c_fn_fib(20) = 10946
+c_fn_fib(21) = 17711
+c_fn_fib(22) = 28657
+c_fn_fib(23) = 46368
+c_fn_fib(24) = 75025
+c_fn_fib(25) = 121393
+c_fn_fib(26) = 196418
+c_fn_fib(27) = 317811
+c_fn_fib(28) = 514229
+c_fn_fib(29) = 832040
+c_fn_fib(30) = 1346269
+c_fn_fib(31) = 2178309
+c_fn_fib(32) = 3524578
+c_fn_fib(33) = 5702887
+c_fn_fib(34) = 9227465
+c_fn_fib(35) = 14930352
+c_fn_fib(36) = 24157817
+c_fn_fib(37) = 39088169
+c_fn_fib(38) = 63245986
+c_fn_fib(39) = 102334155
+c_fn_fib(40) = 165580141
+c_fn_fib(41) = 267914296
+c_fn_fib(42) = 433494437
+c_fn_fib(43) = 701408733
+c_fn_fib(44) = 1134903170
+c_fn_fib(45) = 1836311903
+c_fn_fib(46) = 2971215073
+c_fn_fib(47) = 4807526976
+c_fn_fib(48) = 7778742049
+c_fn_fib(49) = 12586269025
+c_fn_fib(50) = 20365011074
+{% endhighlight %}
+
+But originally, I said:  
 Lets change the integer type
 {% highlight python %}
 int_type = ir.IntType(128);
@@ -423,25 +494,30 @@ Segmentation fault (core dumped)
 {% endhighlight %}
 
 Damn.
-In particular, it faults on `result = c_fn_fib(n)`
+In particular, it faults on `result = c_fn_fib(n)`  
 I wonder who's issue that is...
 
+Spoiler: it was mine.  
+Since we're using 128 bits in the LLVM code, but not in the execution environment, I bet the fault comes from trying to write the 64 bits outside of 32 bit field.
+
+I cant immediately find a ctype for 128 bit signed int, but I bet it would let this work.
+
 ### Conclusion
-That was fun!
-This provides a nice way to interact and learn LLVM.
+That was fun!  
+This provides a nice way to interact and learn LLVM.  
 If you're a compilers professor, maybe think about integrating this into your compilers course.
 
 Though I did have some trouble.
 
-The whole `builder.if_then` and `builder.if_else` producing contextlib.GeneratorContextManager things is confusing.
-One would expect them to produce block objects that can be referenced and played with (say as entry positions to a phi node).
+The whole `builder.if_then` and `builder.if_else` producing `contextlib.GeneratorContextManager` things is confusing.
+One would expect them to produce `Block` objects that can be referenced and played with (say as entry positions to a phi node).
 This is doubly confusing when you look at the [source code](https://github.com/numba/llvmlite/blob/master/llvmlite/ir/builder.py#L210), and it even looks like a `Block` object is being returned.
 
 Maybe that's something that can be worked out.
 
 However its a great start and I'll continue to use it.
 
-Thanks to [Numba](http://numba.pydata.org/) [developers](https://github.com/numba) for their work and to you for reading!  
+Thanks to [Numba](http://numba.pydata.org/) [developers](https://github.com/numba) for their work and to you for reading!
 -Ian J. Bertolacci
 
 ### Full Code
@@ -450,7 +526,7 @@ Thanks to [Numba](http://numba.pydata.org/) [developers](https://github.com/numb
 from __future__ import print_function
 from llvmlite import ir
 import llvmlite.binding as llvm
-from ctypes import CFUNCTYPE, c_int
+from ctypes import CFUNCTYPE, c_int64
 
 """
 Generate fibonacci function:
@@ -537,10 +613,10 @@ engine.finalize_object()
 func_ptr = engine.get_function_address("fn_fib")
 
 # Run the function via ctypes
-c_fn_fib = CFUNCTYPE(c_int, c_int)(func_ptr)
+c_fn_fib = CFUNCTYPE(c_int64, c_int64)(func_ptr)
 
-# Test our function for n in 0..40
-for n in xrange(0,40+1):
+# Test our function for n in 0..50
+for n in xrange(0,50+1):
   result = c_fn_fib(n)
   print( "c_fn_fib({0}) = {1}".format(n, result) )
 {% endhighlight %}

@@ -498,7 +498,7 @@ Damn.
 I wonder who's issue that is...
 
 Spoiler: it was mine.  
-Since we're using 128 bits in the LLVM code, but not in the execution environment, I bet the fault comes from trying to write the 64 bits outside of 32 bit field.
+Since we're using 128 bits in the LLVM code, but not in the execution environment, I bet the fault comes from trying to write the 64 bits outside of the field.
 
 I can't immediately find a ctype for 128 bit signed int, but I bet it would let this work.
 

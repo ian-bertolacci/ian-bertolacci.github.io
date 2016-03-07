@@ -462,7 +462,7 @@ c_fn_fib(50) = 20365011074
 {% endhighlight %}
 
 But originally, I said:  
-Lets change the integer type
+Lets make `int_type` wider
 {% highlight python %}
 int_type = ir.IntType(128);
 {% endhighlight %}
@@ -493,8 +493,8 @@ fn_fib_entry.endif:
 Segmentation fault (core dumped)
 {% endhighlight %}
 
-Damn.
 In particular, it faults on `result = c_fn_fib(n)`  
+Damn.  
 I wonder who's issue that is...
 
 Spoiler: it was mine.  

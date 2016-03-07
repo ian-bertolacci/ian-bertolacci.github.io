@@ -393,13 +393,13 @@ But why?
 
 **Updated 3.06.16**  
 I have to thank [Jon Burgess](https://github.com/jburgess777) for catching this.  
-Originally I said "oh our `int_type` isnt wide enough" without thinking about just how big the max value of a signed int(64) is (9223372036854775807 if I can be trusted with numbers).
+Originally I said "oh our `int_type` isn't wide enough" without thinking about just how big the max value of a signed int(64) is (9223372036854775807 if I can be trusted with numbers).
 
 The real issue is the C type we use.
 Our `int_type` is 64 bits, but `c_int` is only 32 bits!
 I wonder if you could make a really nasty bug from the execution engine only writing 32 bugs.
 Would alignment protect against that?
-Someone should try that.
+Someone should try it.
 
 So lets use `c_int64` in our function pointer cast:
 {% highlight python %}
@@ -500,7 +500,7 @@ I wonder who's issue that is...
 Spoiler: it was mine.  
 Since we're using 128 bits in the LLVM code, but not in the execution environment, I bet the fault comes from trying to write the 64 bits outside of 32 bit field.
 
-I cant immediately find a ctype for 128 bit signed int, but I bet it would let this work.
+I can't immediately find a ctype for 128 bit signed int, but I bet it would let this work.
 
 ### Conclusion
 That was fun!  

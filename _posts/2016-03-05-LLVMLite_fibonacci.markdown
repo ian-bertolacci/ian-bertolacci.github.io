@@ -620,3 +620,5 @@ for n in xrange(0,50+1):
   result = c_fn_fib(n)
   print( "c_fn_fib({0}) = {1}".format(n, result) )
 {% endhighlight %}
+
+{% include disqus.html %}

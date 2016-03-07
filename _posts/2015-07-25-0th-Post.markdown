@@ -47,3 +47,5 @@ I prefer listening to speaking.
 
 Further, I do plan on covering some not-so-development/programming topics such as mental health, education, and other what-nots.  
 The above also applies.
+
+{% include disqus.html %}

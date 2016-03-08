@@ -31,7 +31,16 @@ A lot this probably stems from issues in the linux environment.
 Start to mix this with the many myriad of ways to build and install and you're looking at a recipe for flying computers.
 
 ## Installing llvmlite
-I recommend you try the [0.10 dev version](https://github.com/numba/llvmlite/releases/tag/v0.10.0.dev) (since thats what I'm using), but if you'd like, try the [0.9 release version](https://github.com/numba/llvmlite/releases/tag/v0.9.0) and see if it works for you.
+
+# Using `conda`
+**Updated 3.7.2016**  
+Gosh, when things work they really work.
+
+
+# Build from source
+This is the original way I built it.  
+I dont recommend it (because I dont ever recommend building from source).
+If you do this, try using the [0.10 dev version](https://github.com/numba/llvmlite/releases/tag/v0.10.0.dev) (since thats what I'm using), but if you'd like, try the [0.9 release version](https://github.com/numba/llvmlite/releases/tag/v0.9.0) and see if it works for you.
 
 I will give you a few pointers, but I'm not an expert in _my_ system, much less yours.
 I do use Fedora 23 so keep that in mind.

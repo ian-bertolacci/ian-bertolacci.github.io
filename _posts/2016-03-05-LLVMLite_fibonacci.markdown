@@ -32,14 +32,34 @@ Start to mix this with the many myriad of ways to build and install and you're l
 
 ## Installing llvmlite
 
-# Using `conda`
-**Updated 3.7.2016**  
-Gosh, when things work they really work.
+# Using Anaconda
+**Updated 3.8.2016**  
+Gosh, when things work they really work.  
+The best and easiest way to install llvmlite is with [Anaconda](https://www.continuum.io/why-anaconda).
+If you dont have it, grab the appropriate version from the [downloads](https://www.continuum.io/downloads) page and install it as directed.
 
+_(ps. google-chrome complained, thinking it was malware, but the [md5sum](https://repo.continuum.io/archive/) checked out, and I don't think the continuum.io people are trying to hack us.)  
+(pps. I originally installed anaconda with pip. Don't use pip to install anaconda. It will not work.)_
+
+Installing llvmlite is as easy as  
+`conda install llvmlite`
+
+Boom! Installed.
+
+Check by running  
+`echo "import llvmlite" | python`  
+If nothing happened you're solid.  
+If you got  
+`Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: No module named llvmlite`  
+something went wrong.
+
+Note that Anaconda will install its own version of python under `$anaconda_root/bin` so you will need to use that version of python in the `#!` of your python scripts and put `$anaconda_root/bin` at the top of your `$PATH` variable (`export PATH=$anaconda_root/bin:$PATH`).
 
 # Build from source
-This is the original way I built it.  
-I dont recommend it (because I dont ever recommend building from source).
+This is the original way I installed llvmlite.
+I don't recommend it (because I dont ever recommend building from source).
 If you do this, try using the [0.10 dev version](https://github.com/numba/llvmlite/releases/tag/v0.10.0.dev) (since thats what I'm using), but if you'd like, try the [0.9 release version](https://github.com/numba/llvmlite/releases/tag/v0.9.0) and see if it works for you.
 
 I will give you a few pointers, but I'm not an expert in _my_ system, much less yours.
@@ -61,9 +81,8 @@ and if/when that works
 I use `--user` since I'm use to academic environments where you aren't root and can't install to /usr/lib and also because I've had problems with python setup/pip/easy_install/et al. not installing files with the correct permissions.
 
 to ensure that it was installed, run  
-`echo "import llvmlite" | python`
-
-If nothing happened you're solid.
+`echo "import llvmlite" | python`  
+If nothing happened you're solid.  
 If you got  
 `Traceback (most recent call last):
   File "<stdin>", line 1, in <module>

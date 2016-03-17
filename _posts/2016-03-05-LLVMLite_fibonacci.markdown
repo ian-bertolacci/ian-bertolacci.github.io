@@ -98,15 +98,17 @@ Before getting started I suggest a quick flyby of the [documentation](http://llv
 ## Constructing the fibonacci function
 Apart from hello_world, fibonacci is every programmer's go-to when briefly trying a new language/framework.  
 So we are going to define the LLVM equivalent of
-{% highlight python %}
+
+```python
 def fibonacci( n ):
   if n <= 1:
     return 1;
   return fibonacci( n - 1 ) + fibonacci( n - 2)
-{% endhighlight %}
+```
 
 Which will look something like:
-{% highlight llvm %}
+
+```llvm
 ;; defines our fibonacci function as fn_fib
 ;; t1 = n
 define i64 @"fn_fib"(i64 %".1")
@@ -137,7 +139,7 @@ fn_fib_entry.endif:
   ;; return t10
   ret i64 %".10"
 }
-{% endhighlight %}
+```
 
 Pretty simple.
 
@@ -147,59 +149,60 @@ Lets break down part by part whats going on (full code embedded below).
 This is the only relevant import.
 The [IR layer module](http://llvmlite.readthedocs.org/en/latest/ir/index.html) defines all the relevant types and operations for creating the LLVM IR tree.
 
-{% highlight python %}
+```python
 from llvmlite import ir
-{% endhighlight %}
+```
 
 First we need to define two types:
 
 1. The 64 bit wide int type (int(64)).
 2. The function :: int(64) -> int(64) type.
 
-{% highlight python %}
+```python
 # Create a 64bit wide int type
 int_type = ir.IntType(64);
 # Create a int -> int function
 # first argument is return type, second argument is a list (or iterable thing)
 # of the argument types, in order.
 fn_int_to_int_type = ir.FunctionType( int_type, [int_type] )
-{% endhighlight %}
+```
 
 Next we define the module that this code will exist in.
-{% highlight python %}
+
+```python
 module = ir.Module( name="m_fibonacci_example" )
-{% endhighlight %}
+```
 
 Then we declare the function and create a basic block where its code will be placed into.
 
-{% highlight python %}
+```python
 # Create the Fibonacci function and block
 fn_fib = ir.Function( module, fn_int_to_int_type, name="fn_fib" )
 fn_fib_block = fn_fib.append_basic_block( name="fn_fib_entry" )
-{% endhighlight %}
+```
 
 Now we can start generating code, but first we need to get the LLVM builder object.
 
-{% highlight python %}
+```python
 # Create the builder for the fibonacci code block
 builder = ir.IRBuilder( fn_fib_block )
-{% endhighlight %}
+```
 
 First step in fibonacci is to check if `n <= 1`.  
 To do that, we need to first get the argument `n` from the function
 
-{% highlight python %}
+```python
 # Access the function argument
 fn_fib_n, = fn_fib.args # trailing , to unwrap tuple
-{% endhighlight %}
+```
 
 and create the constant int value '1' (lets also go ahead and make the int value '2').
 
-{% highlight python %}
+```python
 # Const values for int(1) and int(2)
 const_1 = ir.Constant(int_type,1);
 const_2 = ir.Constant(int_type,2);
-{% endhighlight %}
+```
 
 Now we can do our comparison.
 `builder.icmp_signed` will create the comparison instruction.
@@ -207,10 +210,10 @@ Now we can do our comparison.
 This may seem/be obvious to some, but the instruction implicitly will store to an auto-generated temporary value.
 This is a big reason for using LLVM (at the most basic level of compiler development), since we don't have to do our own register allocation.
 
-{% highlight python %}
+```python
 # Create inequality comparison instruction
 fn_fib_n_lteq_1 = builder.icmp_signed(cmpop="<=", lhs=fn_fib_n, rhs=const_1 )
-{% endhighlight %}
+```
 
 We then build our conditional jump using `builder.if_then`, passing our predicate (the result of `fn_fib_n_lteq_1`) to it.  
 Importantly, this doesn't just create our branch instruction, it also creates the 'then' and 'endif' code-blocks.
@@ -218,56 +221,58 @@ Importantly, this doesn't just create our branch instruction, it also creates th
 Now, `builder.if_then` gives us a Generator object which we use by the `with` statement.  
 When we are inside that `with`, we are appending instructions/blocks/etc to the 'then' block.
 We simply return the constant value '1':
-{% highlight python %}
+
+```python
 # Create the base case
 # Using the if_then helper to create the branch instruction and 'then' block if
 # the predicate (fn_fib_n_lteq_1) is true ( ie if n <= 1 then ... )
 with builder.if_then( fn_fib_n_lteq_1 ):
   # Simply return 1 if n <= 1
   builder.ret( const_1 )
-{% endhighlight %}
+```
 
 Now we are appending instructions to the 'endif' block
 First we add instructions to subtract 1 and 2 from n:
-{% highlight python %}
+
+```python
 # This is where the recursive case is created
 # _temp1= n - 1
 fn_fib_n_minus_1 = builder.sub( fn_fib_n, const_1 )
 # _temp2 = n - 2
 fn_fib_n_minus_2 = builder.sub( fn_fib_n, const_2 )
-{% endhighlight %}
+```
 
 Then we call our fibonacci function on the results:
 
-{% highlight python %}
+```python
 # Call fibonacci( n - 1 )
 # arguments in a list, in positional order
 call_fn_fib_n_minus_1 = builder.call( fn_fib, [fn_fib_n_minus_1] );
 # Call fibonacci( n - 2 )
 call_fn_fib_n_minus_2 = builder.call( fn_fib, [fn_fib_n_minus_2] );
-{% endhighlight %}
+```
 
 Then we add the results, and return it.
 
-{% highlight python %}
+```python
 # Add the resulting call values
 fn_fib_rec_res =  builder.add( call_fn_fib_n_minus_1, call_fn_fib_n_minus_2 )
 
 # Return the result of the addition
 builder.ret( fn_fib_rec_res )
-{% endhighlight %}
+```
 
 And that's it!
 That's how you build code in LLVM.
 
 The `ir.Module` can actually be printed and we can see our results
 
-{% highlight python %}
+```python
 # Print the generated LLVM asm code
 print( module )
-{% endhighlight %}
+```
 
-{% highlight llvm %}
+```llvm
 ; ModuleID = "m_fibonacci_example"
 target triple = "unknown-unknown-unknown"
 target datalayout = ""
@@ -287,33 +292,33 @@ fn_fib_entry.endif:
   %".10" = add i64 %".8", %".9"
   ret i64 %".10"
 }
-{% endhighlight %}
+```
 
 What's more, with llvmlite, we can actually run this!
 
 First we need to import a few things.
 
-{% highlight python %}
+```python
 import llvmlite.binding as llvm
 from ctypes import CFUNCTYPE, c_int
-{% endhighlight %}
+```
 
 The [`llvmlite.bindings`](http://llvmlite.readthedocs.org/en/latest/binding/index.html) module contains all the LLVM virtual machine bindings (surprised?).
 ctypes will let us call the compiled function.
 
 Now we initialize all the llvm virtual machine.
 
-{% highlight python %}
+```python
 # initialize the LLVM machine
 # These are all required (apparently)
 llvm.initialize()
 llvm.initialize_native_target()
 llvm.initialize_native_asmprinter()
-{% endhighlight %}
+```
 
 And create the execution engine.
 
-{% highlight python %}
+```python
 # Create engine and attach the generated module
 # Create a target machine representing the host
 target = llvm.Target.from_default_triple()
@@ -321,7 +326,7 @@ target_machine = target.create_target_machine()
 # And an execution engine with an empty backing module
 backing_mod = llvm.parse_assembly("")
 engine = llvm.create_mcjit_compiler(backing_mod, target_machine)
-{% endhighlight %}
+```
 
 Now we parse our module.
 
@@ -329,35 +334,36 @@ Important note: module cannot be directly parsed by llvm.
 `llvm.parse_*` takes either a llvm bytecode object, or a string of llvm IR code.
 `ir.module` is neither, but casting it as a string will give us the underlying llvm IR code.
 
-{% highlight python %}
+```python
 # Parse our generated module
 mod = llvm.parse_assembly( str( module ) )
 mod.verify()
 # Now add the module and make sure it is ready for execution
 engine.add_module(mod)
 engine.finalize_object()
-{% endhighlight %}
+```
 
 Now we get a function pointer, and (it appears) cast that function pointer using ctype.  
 (**Updated 3.06.16**  Can you spot the mistake?)
-{% highlight python %}
+
+```python
 # Look up the function pointer (a Python int)
 func_ptr = engine.get_function_address("fn_fib")
 
 # Run the function via ctypes
 c_fn_fib = CFUNCTYPE(c_int, c_int)(func_ptr)
-{% endhighlight %}
+```
 
 `c_fn_fib` is now a callable function!
 
-{% highlight python %}
+```python
 # Test our function for n in 0..40
 for n in xrange(0,40+1):
   result = c_fn_fib(n)
   print( "c_fn_fib({0}) = {1}".format(n, result) )
-{% endhighlight %}
+```
 
-{% highlight bash %}
+```bash
 c_fn_fib(0) = 1
 c_fn_fib(1) = 1
 c_fn_fib(2) = 2
@@ -399,11 +405,12 @@ c_fn_fib(37) = 39088169
 c_fn_fib(38) = 63245986
 c_fn_fib(39) = 102334155
 c_fn_fib(40) = 165580141
-{% endhighlight %}
+```
 
 Awesome!
 Lets take it a bit further!
-{% highlight bash %}
+
+```bash
 c_fn_fib(41) = 267914296
 c_fn_fib(42) = 433494437
 c_fn_fib(43) = 701408733
@@ -414,7 +421,7 @@ c_fn_fib(47) = 512559680
 c_fn_fib(48) = -811192543
 c_fn_fib(49) = -298632863
 c_fn_fib(50) = -1109825406
-{% endhighlight %}
+```
 
 Whoops we integer overflowed!
 But why?
@@ -430,12 +437,14 @@ Would alignment protect against that?
 Someone should try it.
 
 So lets use `c_int64` in our function pointer cast:
-{% highlight python %}
+
+```python
 c_fn_fib = CFUNCTYPE(c_int64, c_int64)(func_ptr)
-{% endhighlight %}
+```
 
 And voilà, correct results.
-{% highlight bash %}
+
+```bash
 c_fn_fib(0) = 1
 c_fn_fib(1) = 1
 c_fn_fib(2) = 2
@@ -487,17 +496,18 @@ c_fn_fib(47) = 4807526976
 c_fn_fib(48) = 7778742049
 c_fn_fib(49) = 12586269025
 c_fn_fib(50) = 20365011074
-{% endhighlight %}
+```
 
 But originally, I said:  
 Lets make `int_type` wider
-{% highlight python %}
+
+```python
 int_type = ir.IntType(128);
-{% endhighlight %}
+```
 
 And try that.
 
-{% highlight bash %}
+```bash
 ; ModuleID = "m_fibonacci_example"
 target triple = "unknown-unknown-unknown"
 target datalayout = ""
@@ -519,7 +529,7 @@ fn_fib_entry.endif:
 }
 
 Segmentation fault (core dumped)
-{% endhighlight %}
+```
 
 In particular, it faults on `result = c_fn_fib(n)`  
 Damn.  
@@ -551,7 +561,7 @@ Thanks to [Numba](http://numba.pydata.org/) [developers](https://github.com/numb
 
 ### Full Code
 
-{% highlight python %}
+```python
 from __future__ import print_function
 from llvmlite import ir
 import llvmlite.binding as llvm
@@ -648,6 +658,6 @@ c_fn_fib = CFUNCTYPE(c_int64, c_int64)(func_ptr)
 for n in xrange(0,50+1):
   result = c_fn_fib(n)
   print( "c_fn_fib({0}) = {1}".format(n, result) )
-{% endhighlight %}
+```
 
 {% include disqus.html %}

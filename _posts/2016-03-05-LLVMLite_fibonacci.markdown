@@ -546,6 +546,7 @@ Maybe that's something that can be worked out.
 However its a great start and I'll continue to use it.
 
 Thanks to [Numba](http://numba.pydata.org/) [developers](https://github.com/numba) for their work and to you for reading!
+
 -Ian J. Bertolacci
 
 ### Full Code

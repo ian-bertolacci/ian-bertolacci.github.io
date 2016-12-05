@@ -9,6 +9,6 @@ Currently an PhD student at University of Arizona (started 2016), researching HP
 Will your application survive the next hardware?
 
 ### Contact me
-[UA page](https://www.cs.arizona.edu/~ianbertolacci)
+[UA page](http://www.cs.arizona.edu/~ianbertolacci)
 
 [ian.bertolacci@gmail.com](mailto:ian.bertolacci@gmail.com)

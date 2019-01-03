@@ -432,7 +432,7 @@ Originally I said "oh our `int_type` isn't wide enough" without thinking about j
 
 The real issue is the C type we use.
 Our `int_type` is 64 bits, but `c_int` is only 32 bits!
-I wonder if you could make a really nasty bug from the execution engine only writing 32 bugs.
+I wonder if you could make a really nasty bug from the execution engine only writing 32 bits.
 Would alignment protect against that?
 Someone should try it.
 

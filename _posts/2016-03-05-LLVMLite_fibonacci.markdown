@@ -1,8 +1,13 @@
 ---
-layout: post
 title:  Writing Fibonacci in LLVM with llvmlite
 date:   2016-03-05 18:42:06 -0700
-categories: LLVM llvmlite python compilers programming
+permalink: /posts/writing_fibonacci_in_LLVM_with_llvmlite
+tags:
+  - LLVM
+  - llvmlite
+  - python
+  - compilers
+  - programming
 ---
 Whoa hey whats this? A blog? Man I should write one of those.
 
@@ -16,7 +21,7 @@ LLVM is cool (if difficult to build/install/use/link) and python is great!
 So this is particularly exciting.
 
 I've been interested in doing the LLVM [Kaleidoscope](http://llvm.org/docs/tutorial/LangImpl1.html) tutorial for ages, but dislike using C++, especially for personal projects.
-Not to mention that LLVM itself can be quite unaccessable.
+Not to mention that LLVM itself can be quite inaccessable.
 Have you ever built [LLVM from source](http://llvm.org/releases/download.html#3.7.1)?
 If you want to hate yourself and your for a few hours try that sucker out.
 
@@ -659,5 +664,3 @@ for n in xrange(0,50+1):
   result = c_fn_fib(n)
   print( "c_fn_fib({0}) = {1}".format(n, result) )
 ```
-
-{% include disqus.html %}

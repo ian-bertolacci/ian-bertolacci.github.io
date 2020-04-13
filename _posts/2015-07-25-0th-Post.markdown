@@ -1,6 +1,8 @@
 ---
-layout: post
 title: 0'th Post
+permalink: /posts/0th_post
+tags:
+  - meta
 ---
 
 I guess the first post is a good place to describe who I am and what this blog will (attempt to) be about.
@@ -29,7 +31,7 @@ This blog will serve a few functions
   Instead of having ideas or thoughts bounce around endlessly in my own skull, this can be a place where I hang them up to dry on the line. Hopefully someone will stumble here and start a dialogue.
 
 + Complaint/Rant zone:  
-  I'd like to keep my therapist busy with legitimate issues; not the coding fluff that gives my stress-ball a sizeable chiropractor's bill.
+  I'd like to keep my therapist busy with legitimate issues; not the coding fluff that gives my stress-ball a sizable chiropractor's bill.
 
 + Resource to other developers/students:  
   I wish I knew what I know now several years ago. And so here is where I will put things someone will come to regret not knowing about earlier.
@@ -47,5 +49,3 @@ I prefer listening to speaking.
 
 Further, I do plan on covering some not-so-development/programming topics such as mental health, education, and other what-nots.  
 The above also applies.
-
-{% include disqus.html %}

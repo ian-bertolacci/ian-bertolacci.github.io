@@ -7,14 +7,13 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Ian J. Bertolacci"
+title                    : "Your Name / Site Title"
 title_separator          : "-"
-name                     : &name "Ian J. Bertolacci"
+name                     : &name "Your Name"
 description              : &description "personal description"
-#NOTE: This needs to be changed between the actual url and the development url when releaseing/developing respectively
-url                      : http://127.0.0.1:4000 #https://ian-bertolacci.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "ian-bertolacci/ian-bertolacci.github.io"
+repository               : "academicpages/academicpages.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -22,9 +21,9 @@ future                   : true
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
 talkmap_link             : false #change to true to add link to talkmap on talks page
 comments:
-  provider               : "disqus" #false (default), "disqus", #"discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
   disqus:
-    shortname            : ianbertolaccigithubio
+    shortname            :
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -81,17 +80,15 @@ analytics:
 
 # Site Author
 author:
-  name             : "Ian J. Bertolacci"
-  avatar           : "profile.jpg"
-  bio              : ""
-  location         : "Tucson, AZ, USA"
-  employer         : "University of Arizona"
-  github           : "ian-bertolacci"
-  twitter          : "ianbertolacci"
-  reddit           : ianbertolacci
-  googlescholar    : "https://scholar.google.com/citations?user=zKv7fRwAAAAJ&hl=en"
-  email            : "ian.bertolacci@gmail.com"
-  researchgate     :  "https://www.researchgate.net/profile/Ian_Bertolacci"
+  name             : "Your Sidebar Name"
+  avatar           : "profile.png"
+  bio              : "Your biography for the left-hand sidebar"
+  location         : "Location"
+  employer         :
+  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  googlescholar    : "http://yourfullgooglescholarurl.com"
+  email            :
+  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
   codepen          :
@@ -99,19 +96,20 @@ author:
   flickr           :
   facebook         :
   foursquare       :
+  github           : "academicpages"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
   linkedin         :
-  orcid            : #"http://orcid.org/yourorcidurl"
-  pubmed           :
+  orcid            : "http://orcid.org/yourorcidurl"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
+  twitter          : "replacethistwitterhandle"
   vine             :
   weibo            :
   xing             :
@@ -183,7 +181,7 @@ collections:
   publications:
     output: true
     permalink: /:collection/:path/
-  projects:
+  portfolio:
     output: true
     permalink: /:collection/:path/
   talks:
@@ -229,10 +227,10 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _projects
+  # _portfolio
   - scope:
       path: ""
-      type: projects
+      type: portfolio
     values:
       layout: single
       author_profile: true
@@ -257,7 +255,7 @@ sass:
 permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
-timezone: America/Phoenix # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: America/Los_Angeles # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins

@@ -137,6 +137,15 @@
         </li>
       {% endif %}
 
+      {% if author.codepen %}
+        <li>
+          <a href="https://codepen.io/{{ author.codepen }}" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-codepen" aria-hidden="true"></i>
+            <span class="label">CodePen</span>
+          </a>
+        </li>
+      {% endif %}
+
       {% if author.googlescholar %}
         <li>
           <a href="https://scholar.google.com/citations?user={{ author.googlescholar }}">
@@ -301,20 +310,22 @@
         </li>
       {% endif %}
 
-      {% if author.codepen %}
-        <li>
-          <a href="https://codepen.io/{{ author.codepen }}" itemprop="sameAs" rel="nofollow noopener noreferrer">
-            <i class="fab fa-fw fa-codepen" aria-hidden="true"></i>
-            <span class="label">CodePen</span>
-          </a>
-        </li>
-      {% endif %}
+
 
       {% if author.vine %}
         <li>
           <a href="https://vine.co/u/{{ author.vine }}" itemprop="sameAs" rel="nofollow noopener noreferrer">
             <i class="fab fa-fw fa-vine" aria-hidden="true"></i>
             <span class="label">{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.kofi %}
+        <li>
+          <a href="https://www.ko-fi.com/{{ author.kofi }}" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fa fa-fw fa-coffee" aria-hidden="true"></i>
+            <span class="label">Support me on Ko-Fi</span>
           </a>
         </li>
       {% endif %}

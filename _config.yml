@@ -99,13 +99,16 @@ author:
   location         : "Tucson, AZ, USA"
   employer:
     name           : "Comp Sci @ University of Arizona"
-    url            : "https://www.cs.arizona.edu"
+    url            : "https://www.cs.arizona.edu/~ianbertolacci"
   email            : "ian.bertolacci@gmail.com"
   github           : "ian-bertolacci"
   linkedin         : "ianbertolacci"
   googlescholar    : "zKv7fRwAAAAJ"
   researchgate     : "Ian_Bertolacci"
   twitter          : "ianbertolacci"
+  kofi             : "ianbertolacci"
+
+  patreon          : #"ianbertolacci"
 
   reddit           : #ianbertolacci
 

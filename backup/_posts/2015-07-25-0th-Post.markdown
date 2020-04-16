@@ -1,0 +1,51 @@
+---
+title: 0'th Post
+permalink: /posts/0th_post
+tags:
+  - meta
+---
+
+I guess the first post is a good place to describe who I am and what this blog will (attempt to) be about.
+
+`> whoami`
+---------
+I am a super-senior undergraduate at [Colorado State University](http://www.cs.colostate.edu/~ibertola/), where I study computer science and cognitive neuro-psychology, and [research](https://www.researchgate.net/profile/Ian_Bertolacci) compilers, languages, and high performance computing.
+
+
+At the time of writing, I am currently an intern at [Cray](http://www.cray.com/) working with the [Chapel](http://chapel.cray.com/) programming language group.  
+I will go back to CSU in late August, and (begrudgingly) graduate in May 2016.
+
+I plan to plan a plan for my post-graduate self.  
+I am looking to go into research (either at a university or in industry) in $something involving scientific computing.  
+$something changes about every 3-to-4 months.  
+Right now $something == "HPC + protein folding as a tool to study drug effects and designing molecules for drug lesioning psychology studies.
+
+
+I also drink near lethal amounts of black tea. Hence its inclusion into the blog title.
+
+`> man blog`
+-------------
+This blog will serve a few functions
+
++ Air my thoughts:  
+  Instead of having ideas or thoughts bounce around endlessly in my own skull, this can be a place where I hang them up to dry on the line. Hopefully someone will stumble here and start a dialogue.
+
++ Complaint/Rant zone:  
+  I'd like to keep my therapist busy with legitimate issues; not the coding fluff that gives my stress-ball a sizable chiropractor's bill.
+
++ Resource to other developers/students:  
+  I wish I knew what I know now several years ago. And so here is where I will put things someone will come to regret not knowing about earlier.
+
+
+`> man blog | grep "caveats"`
+-----------------------------
+I do not claim to be an expert in any field or to have extensive knowledge capable of trumping anyone else's opinions/expertise.  
+I will, however, speak how I feel.  
+Notice the keyword *Anger* in the blog title.
+
+I may say something incorrect.  
+In which case, you can feel free to correct me (in a respectable manner).  
+I prefer listening to speaking.
+
+Further, I do plan on covering some not-so-development/programming topics such as mental health, education, and other what-nots.  
+The above also applies.

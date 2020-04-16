@@ -1,5 +1,6 @@
 ---
 title: "Under Construction!"
 collection: talks
-type: "Talk"
 ---
+
+I have given a number of presentations of work both in academic and other settings

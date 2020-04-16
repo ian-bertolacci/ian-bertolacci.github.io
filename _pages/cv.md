@@ -8,9 +8,6 @@ redirect_from:
   - /cv
 ---
 
-{% include base_path %}
-
-
 Education
 ======
 * M.S. in Computer Science, University of Arizona, 2020

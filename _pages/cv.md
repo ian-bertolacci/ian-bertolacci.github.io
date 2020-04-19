@@ -8,6 +8,8 @@ redirect_from:
   - /cv
 ---
 
+[PDF Version](/assets/documents/IanBertolacci_Public_Resume.pdf)
+
 Education
 ======
 * M.S. in Computer Science, University of Arizona, 2020

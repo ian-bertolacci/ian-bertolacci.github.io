@@ -28,6 +28,7 @@ Skills
   * Experience working with compilers, code transformation, and code generation.
   * Experience with multiple build systems.
   * Presentation and education experience.
+  * Experience working in Agile development cycle.
   * Regex Wizard.
 * Programming languages
   * Skilled: Python, Bash

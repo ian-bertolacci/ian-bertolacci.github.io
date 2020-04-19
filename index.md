@@ -12,10 +12,18 @@ redirect_from:
   - /index.html
 ---
 
-Graduating MS student at University of Arizona.
-Researching HPC by way of compilers and programming languages.
-Will your application survive the next hardware?
+<!-- The two spaces are important here. Newline with no paragraph break-->
+Jack-of-all trades, master of... well... Computer Science!  
+Graduating MS student at University of Arizona.  
+[I am available for hire!](/resume_cv)
 
-My primary interests are developing compiler and programming languages.
-How can we bring the power of the compiler to application developers, beyond being the thing that complains when they miss a semi-colon?
-How can we build compiler frameworks that allow application developers to extend existing programming languages to create application specific abstractions that inform code transformations and optimizations?
+I currently work in a research lab working on performance improvements for legacy scientific applications.
+I've done research on high-performance computing, inter-loop optimizations, compiler transformations, and domain specific languages.
+
+I'm very interested in compiler and programming language tool development for software engineering.
+I think that we provide open compiler infrastructure to application developers so that they can analyze and transform their programs with the same ease that we use regular expressions to parse and reformat text.
+
+This summer (2020) I will be adding these tech skills:
++ Statistical analysis and machine learning.
++ Back-end development.
++ Python GUI development.

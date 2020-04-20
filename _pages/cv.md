@@ -22,7 +22,7 @@ Skills
 * Overview
   * Capable of developing in multiple programming languages.
   * Proficient in Linux environment.
-  * Reversion control with git and GitHub.
+  * Version control with git and GitHub.
   * Parallel programming.
   * Performance analysis and optimizations.
   * Experience working with compilers, code transformation, and code generation.

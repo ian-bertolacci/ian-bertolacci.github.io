@@ -19,6 +19,7 @@ Education
 
 Skills
 ======
+<<<<<<< HEAD
 * Capable of developing in multiple programming languages
   + Skilled: Python, Bash
   + Proficient: C, C++, Chapel
@@ -39,6 +40,37 @@ Skills
   + [ROSE](http://rosecompiler.org/), LLVM, Clang, [custom source-to-source translation tools](https://github.com/chapel-lang/chapel/tree/master/util/misc/gen-LAPACK)
   + Domain Specific Language development
 * Regex Wizard
+=======
+* Overview
+  * Capable of developing in multiple programming languages.
+  * Proficient in Linux environment.
+  * Version control with git and GitHub.
+  * Parallel programming.
+  * Performance analysis and optimizations.
+  * Experience working with compilers, code transformation, and code generation.
+  * Experience with multiple build systems.
+  * Presentation and education experience.
+  * Experience working in Agile development cycle.
+  * Regex Wizard.
+* Programming languages
+  * Skilled: Python, Bash
+  * Proficient: C, C++, Chapel
+  * Former or Casual experience: Java, CUDA, Rust, PHP, JavaScript
+* Parallel programming: Python.Multiprocessing, OpenMP, OpenCL, MPI, CUDA
+* Compilers and PL
+  * Compiler frameworks: ROSE, LLVM, Clang
+  * Bespoke source-to-source translation frameworks
+  * Domain Specific Language development
+* Building Tools: Make, CMake, AutoTools ('from the ground-up' experience in all)
+* Packaging: Module, Docker
+* Testing:
+  * Frameworks: GTest
+  * Bespoke testing frameworks for specific cases.
+* Numerical Solvers: Google OR-Tools, SymPy
+* Performance Profiling
+  * Profiling tools: GProf, valgrind.
+  * Bespoke performance timing and analysis frameworks.
+>>>>>>> f7009d4df0244d9d03aeb7f79f320b9b765692fd
 
 Work experience
 ======

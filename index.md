@@ -22,8 +22,3 @@ I've done research on high-performance computing, inter-loop optimizations, comp
 
 I'm very interested in compiler and programming language tool development for software engineering.
 I think that we provide open compiler infrastructure to application developers so that they can analyze and transform their programs with the same ease that we use regular expressions to parse and reformat text.
-
-This summer (2020) I will be adding these tech skills:
-+ Statistical analysis and machine learning.
-+ Back-end development.
-+ Python GUI development.

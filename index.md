@@ -14,7 +14,8 @@ redirect_from:
 
 <!-- The two spaces are important here. Newline with no paragraph break-->
 Jack-of-all trades, master of... well... Computer Science!  
-Graduating MS student at University of Arizona.  
+I recently graduated with my M.S. in Computer Science from University of Arizona.  
+I am currently working as a Scientific Analyst at the University of Arizona.
 [I am available for hire!](/resume_cv)
 
 I currently work in a research lab working on performance improvements for legacy scientific applications.

@@ -40,10 +40,10 @@ Start to mix this with the many myriad of ways to build and install and you're l
 # Using Anaconda
 **Updated 3.8.2016**  
 Gosh, when things work they really work.  
-The best and easiest way to install llvmlite is with [Anaconda](https://www.continuum.io/why-anaconda).
-If you dont have it, grab the appropriate version from the [downloads](https://www.continuum.io/downloads) page and install it as directed.
+The best and easiest way to install llvmlite is with [Anaconda](https://www.anaconda.com/).
+If you dont have it, grab the appropriate version from the [downloads](https://www.anaconda.com/products/individual#Downloads) page and install it as directed.
 
-_(ps. google-chrome complained, thinking it was malware, but the [md5sum](https://repo.continuum.io/archive/) checked out, and I don't think the continuum.io people are trying to hack us.)  
+_(ps. google-chrome complained, thinking it was malware, but the [md5sum](https://repo.anaconda.com/archive/) checked out, and I don't think the continuum.io people are trying to hack us.)  
 (pps. I originally installed anaconda with pip. Don't use pip to install anaconda. It will not work.)_
 
 Installing llvmlite is as easy as  

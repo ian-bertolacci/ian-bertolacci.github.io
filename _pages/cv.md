@@ -43,15 +43,21 @@ Skills
 
 Work experience
 ======
-* May 2020 - Current (Ending Mid-August 2020): Scientific Analyst 1
-  + University of Arizona
+* September 2020 - Current: Distributed Systems Senior Associate Software Development Engineer
+  + [Workday](https://www.workday.com/)
+
+* May 2020 - August 2020: Scientific Analyst 1
+  + [University of Arizona](https://www.arizona.edu)
+    - [Computer Science Department](https://www.cs.arizona.edu/)
   + Activities and duties included:
     - Conduct performance experiments and analysis of scientific applications
     - Assist in the development and improvement of scientific applications
     - Assist in the development of scientific data-processing infrastructure
   + Supervisor: Michelle Strout Ph.D
+
 * August 2016 - May 2020: Graduate Research Assistant
-  + University of Arizona
+  + [University of Arizona](https://www.arizona.edu)
+    - [Computer Science Department](https://www.cs.arizona.edu/)
   + Activities and duties included:
     - Investigate performance of existing scientific application and propose efficiency changes
     - Plan API changes to provide path for shared-memory parallelization and automated inter-loop optimization
@@ -62,7 +68,8 @@ Work experience
   + Supervisor: Michelle Strout Ph.D
 
 * Summer 2018: Software Engineering Intern
-  + Cray Incorporated (now part of Hewlett-Packard Enterprise)
+  + Cray Incorporated ([now part of Hewlett-Packard Enterprise](https://www.hpe.com/us/en/compute/hpc/cray-acquisition.html))
+    - [Chapel Language Team](https://chapel-lang.org/)
   + Activities and duties included:
     - Extended Chapel's compressed sparse-array data structure
     - Explored a developer-friendly refactor to Chapel's Domain Standard Interface
@@ -70,21 +77,31 @@ Work experience
   + Supervisors: Brad Chamberlain Ph.D. and Benjamin Robbins
 
 * Summer 2015: Software Engineering Intern
-  + Cray Incorporated (now part of Hewlett-Packard Enterprise)
+  + Cray Incorporated ([now part of Hewlett-Packard Enterprise](https://www.hpe.com/us/en/compute/hpc/cray-acquisition.html))
+    - [Chapel Language Team](https://chapel-lang.org/)
   + Activities and duties included:
     - Implemented [Chapel Linear Algebra Package](https://chapel-lang.org/docs/latest/primers/LAPACKlib.html) ([LAPack](https://en.wikipedia.org/wiki/LAPACK)) interface module using custom automated C/Fortran-to-Chapel interface translation tool
     - Developed Chapel programming language tutorial (learnxinyminutes.com/docs/chapel)
   + Supervisors: Brad Chamberlain Ph.D. and Tom MacDonald
 
 * May 2014 - August 2016: Undergraduate Research Assistant
-  + Colorado State University
+  + [Colorado State University](https://www.colostate.edu/)
+    - [Computer Science Department](https://compsci.colostate.edu/)
   + Activities and duties included:
     - Conducted and published research on methods of hiding time-tiling loop-optimizations using existing programming language features
     - Conducted performance experiments
   + Supervisors: Michelle Strout Ph.D. and Catherine Olschanowsky Ph.D
 
+* August 2012 - May 2014: Undergraduate Teaching Assistant
+  + [Colorado State University](https://www.colostate.edu/)
+    - [Computer Science Department](https://compsci.colostate.edu/)
+  + Activities and duties included:
+    - Developing and leading hands-on instructional sessions in computer-lab setting
+  + Supervisors: Chris Wilcox Ph.D., Elaine Regelson, and Debbie Bartlett
+
 * January 2012 - August 2012: Undergraduate Research Assistant
-  + Colorado State University
+  + [Colorado State University](https://www.colostate.edu/)
+    - [Psychology Department](https://psychology.colostate.edu/)
   + Activities and duties included:
     - Conducting psychological experiments
     - Participating in group research meetings discussing methods and topics in automation in learning

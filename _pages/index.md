@@ -14,7 +14,7 @@ redirect_from:
 
 <!-- The two spaces are important here. Newline with no paragraph break-->
 Jack-of-all trades, master of... well... Computer Science!  
-I am currently a Distributed Systems Senior Associate Software Development Engineer at [Workday](https://www.workday.com/).  
+I am currently a Software Development Engineer (Distributed Systems) at [Workday](https://www.workday.com/).  
 I graduated with my M.S. in Computer Science from University of Arizona in 2020.
 
 I'm very interested in compiler and programming language tool development for software engineering.

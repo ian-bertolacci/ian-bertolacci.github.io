@@ -21,12 +21,12 @@ Skills
 ======
 
 * Capable of developing in multiple programming languages
-  + Skilled: Python, Bash
-  + Proficient: C, C++, Chapel
-  + Former or Casual experience: Java, CUDA, Rust, PHP, JavaScript
+  + Skilled: Scala, Python, Bash
+  + Proficient: Java, C, C++
+  + Former or Casual experience: Chapel, CUDA, Rust, PHP, JavaScript
 * Presentation and education experience
 * Experience working in Agile development cycle
-* Reversion control with git and GitHub
+* Reversion control with git, GitHub, Bitbucket
 * Proficient in Linux environment
 * Experience with multiple build systems
   + Make, CMake, AutoTools ('from the ground-up' experience in all)
@@ -37,13 +37,13 @@ Skills
 * Performance analysis and optimizations
   + GProf, valgrind, custom performance timing and analysis tools
 * Experience working with compilers, code transformation, and code generation
-  + [ROSE](http://rosecompiler.org/), LLVM, Clang, [custom source-to-source translation tools](https://github.com/chapel-lang/chapel/tree/master/util/misc/gen-LAPACK)
+  + [ROSE](http://rosecompiler.org/), LLVM, Clang, [custom source-to-source translation tools](https://github.com/chapel-lang/chapel/tree/master/util/misc/gen-LAPACK), Calcite
   + Domain Specific Language development
 * Regex Wizard
 
 Work experience
 ======
-* September 2020 - Current: Distributed Systems Senior Associate Software Development Engineer
+* September 2020 - Current: Senior Software Engineer
   + [Workday](https://www.workday.com/)
 
 * May 2020 - August 2020: Scientific Analyst 1

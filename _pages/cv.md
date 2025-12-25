@@ -43,8 +43,13 @@ Skills
 
 Work experience
 ======
-* September 2020 - Current: Senior Software Engineer
+* September 2020 - Current: Senior Software Engineer (Distributed Systems)
   + [Workday](https://www.workday.com/)
+  + Activities and duties included:
+    - Contributing to the development of proprietary column-store database that improved performance of important reports by over 1000x (hours to seconds).
+    - Lead development of compilation of query plans to proprietary executable forms.
+    - Lead development of query planning/optimization (using Calcite) and compilation.
+    - Worked with applications and runtime teams to guide full end-to-end support of various SQL feature support.
 
 * May 2020 - August 2020: Scientific Analyst 1
   + [University of Arizona](https://www.arizona.edu)
